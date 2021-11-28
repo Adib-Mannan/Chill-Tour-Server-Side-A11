@@ -1,5 +1,5 @@
-const { MongoClient } = require('mongodb');
 const express = require('express');
+const { MongoClient } = require('mongodb');
 const cors = require('cors');
 const ObjectId = require('mongoDb').ObjectId;
 require('dotenv').config();
@@ -12,6 +12,7 @@ app.use(express.json())
 
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.3uvbd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+console.log(uri);
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 async function run() {
@@ -77,6 +78,9 @@ run().catch(console.dir);
 
 app.get('/', (req, res) => {
     res.send('Welcome to Chill World')
+})
+app.get('/hello', (req, res) => {
+    res.send('Welcome ')
 })
 
 app.listen(port, () => {
