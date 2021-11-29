@@ -10,16 +10,16 @@ app.use(cors());
 app.use(express.json())
 
 
-
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.3uvbd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
-console.log(uri);
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.vgvb4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+console.log(uri);
+
 
 async function run() {
     try {
         await client.connect();
         const database = client.db("ChillTour");
-        const packageCollection = database.collection("package");
+        const packageCollection = database.collection("packages");
         const orderCollection = database.collection("orders")
 
         //  PACKAGE GET API
